@@ -1,0 +1,32 @@
+{
+  "uuid": "a107697e-f275-4428-84d1-9bb92ed0687d",
+  "shortName": "mineclock",
+  "longName": "mineclock",
+  "companyName": "The Minecraft clock",
+  "versionLabel": "1.0",
+  "sdkVersion": "3",
+  "targetPlatforms": ["basalt", "chalk"],
+  "watchapp": {
+    "watchface": true
+  },
+  "resources": {
+    "media": [
+      {
+        "type": "font",
+        "characterRegex": "[0-9:APM ]",
+        "name": "FONT_MINECRAFTER_24",
+        "file": "fonts/minecrafter_3.ttf"
+      },
+      {
+        "type": "bitmap",
+        "name": "IMAGE_BOARD",
+        "file": "images/board.png"
+      },
+      {
+        "type": "bitmap",
+        "name": "IMAGE_BEZEL",
+        "file": "images/bezel.png"
+      }
+    ]
+  }
+}
