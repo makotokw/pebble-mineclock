@@ -21,9 +21,11 @@ static void draw_board(Layer *layer, GContext *ctx, int time_angle) {
 }
 
 static void board_update_proc(Layer *layer, GContext *ctx) {
+  APP_LOG(APP_LOG_LEVEL_DEBUG, "board_update_proc");
   time_t temp = time(NULL);
   struct tm *tick_time = localtime(&temp);
-  int time_angle = (360 * ((tick_time->tm_hour * 3600) + (tick_time->tm_min * 60))) / 86400;
+  //int time_angle = (360 * ((tick_time->tm_hour * 3600) + (tick_time->tm_min * 60))) / 86400;
+  int time_angle = (360 * (tick_time->tm_hour * 60 + tick_time->tm_min)) / 1440;
   draw_board(layer, ctx, time_angle);
 }
 
@@ -75,8 +77,12 @@ void analog_deinit_clock(Window *window) {
 }
 
 void analog_update_clock(struct tm *tick_time, TimeUnits units_changed) {
-  // Update via 5min to save battery
-  if (tick_time->tm_min % 5 == 0) {
+  APP_LOG(APP_LOG_LEVEL_DEBUG, "analog_update_clock: %d", units_changed);
+  static int last_min_angle = 0;
+  int min_angle = 360 * (tick_time->tm_hour * 60 + tick_time->tm_min) / 1440;
+  if (min_angle != last_min_angle) {
     layer_mark_dirty(s_board_layer);
+    last_min_angle = min_angle;
+    APP_LOG(APP_LOG_LEVEL_DEBUG, "board_min_angle: %d", min_angle);
   }
 }
