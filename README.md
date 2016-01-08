@@ -1,7 +1,7 @@
-mineclock
+Mineclock
 ===========
 
-The minecraft clock as Pebble watchface for Pebble Time.
+The Pebble watchface looks like the Minecraft clock.
 
 ![](https://dl.dropboxusercontent.com/u/8932138/downloads/pebble/mineclock/screenshot_chalk.gif)
 
