@@ -4,6 +4,7 @@
 static Window *s_window;
 
 static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
+  //APP_LOG(APP_LOG_LEVEL_DEBUG, "tick_handler %d", units_changed);
   analog_update_clock(tick_time, units_changed);
   digital_update_clock(tick_time, units_changed);
 }
@@ -18,6 +19,13 @@ static void window_unload(Window *window) {
   digital_deinit_clock(window);
 }
 
+static void app_did_focus(bool in_focus) {
+  if (in_focus) {
+    Layer *window_layer = window_get_root_layer(s_window);
+    layer_mark_dirty(window_layer);
+  }
+}
+
 static void init(void) {
   s_window = window_create();
   window_set_window_handlers(s_window, (WindowHandlers) {
@@ -26,6 +34,10 @@ static void init(void) {
   });
   const bool animated = true;
   window_stack_push(s_window, animated);
+
+  app_focus_service_subscribe_handlers((AppFocusHandlers){
+    .did_focus = app_did_focus,
+  });
 
   tick_timer_service_subscribe(MINUTE_UNIT, tick_handler);
 }
