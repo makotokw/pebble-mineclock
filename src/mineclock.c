@@ -3,6 +3,13 @@
 
 static Window *s_window;
 
+/*
+void set_time_for_screenshot(struct tm *tick_time) {
+  tick_time->tm_hour = 6 * (int)(tick_time->tm_sec / 15);
+  tick_time->tm_min = 0;
+}
+*/
+
 static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
   //APP_LOG(APP_LOG_LEVEL_DEBUG, "tick_handler %d", units_changed);
   analog_update_clock(tick_time, units_changed);

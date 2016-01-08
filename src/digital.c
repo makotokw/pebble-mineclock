@@ -43,6 +43,7 @@ void digital_deinit_clock(Window* window) {
 void digital_update_clock(struct tm *tick_time, TimeUnits units_changed) {
   static int last_hour = 0;
   static int last_min = 0;
+  // set_time_for_screenshot(tick_time);
   if (last_hour != tick_time->tm_hour || last_min != tick_time->tm_min) {
     update_clock(tick_time);
     last_hour = tick_time->tm_hour;

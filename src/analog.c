@@ -24,7 +24,8 @@ static void board_update_proc(Layer *layer, GContext *ctx) {
   APP_LOG(APP_LOG_LEVEL_DEBUG, "board_update_proc");
   time_t temp = time(NULL);
   struct tm *tick_time = localtime(&temp);
-  //int time_angle = (360 * ((tick_time->tm_hour * 3600) + (tick_time->tm_min * 60))) / 86400;
+  // set_time_for_screenshot(tick_time);
+  // int time_angle = (360 * ((tick_time->tm_hour * 3600) + (tick_time->tm_min * 60))) / 86400;
   int time_angle = (360 * (tick_time->tm_hour * 60 + tick_time->tm_min)) / 1440;
   draw_board(layer, ctx, time_angle);
 }
