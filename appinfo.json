@@ -24,6 +24,11 @@
         "file": "fonts/minecrafter_3.ttf"
       },
       {
+        "type": "font",
+        "name": "FONT_WHITERABBIT_10",
+        "file": "fonts/whiterabbit.ttf"
+      },
+      {
         "type": "bitmap",
         "name": "IMAGE_BOARD",
         "file": "images/board.png"
