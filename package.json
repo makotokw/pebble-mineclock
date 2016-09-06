@@ -6,6 +6,14 @@
   "keywords": [
     "pebble-app"
   ],
+  "scripts": {
+    "build": "pebble build",
+    "clean": "pebble clean",
+    "a": "pebble install -vvvv --emulator aplite",
+    "b": "pebble install -vvvv --emulator basalt",
+    "c": "pebble install -vvvv --emulator chalk",
+    "d": "pebble install -vvvv --emulator diorite"
+  },
   "pebble": {
     "sdkVersion": "3",
     "resources": {
@@ -23,8 +31,9 @@
           "file": "fonts/minecrafter_3.ttf"
         },
         {
+          "characterRegex": "[0-9:A-Za-z ]",
           "type": "font",
-          "name": "FONT_WHITERABBIT_12",
+          "name": "FONT_WHITERABBIT_11",
           "file": "fonts/whiterabbit.ttf"
         },
         {
@@ -52,7 +61,8 @@
     "targetPlatforms": [
       "aplite",
       "basalt",
-      "chalk"
+      "chalk",
+      "diorite"
     ],
     "capabilities": []
   },

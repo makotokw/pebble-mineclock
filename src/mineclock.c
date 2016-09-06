@@ -3,12 +3,12 @@
 
 static Window *s_window;
 
-/*
+#if USE_DEMO_MODE
 void set_time_for_screenshot(struct tm *tick_time) {
   tick_time->tm_hour = 6 * (int)(tick_time->tm_sec / 15);
   tick_time->tm_min = 0;
 }
-*/
+#endif
 
 static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
   //APP_LOG(APP_LOG_LEVEL_DEBUG, "tick_handler %d", units_changed);

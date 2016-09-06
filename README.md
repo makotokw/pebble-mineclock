@@ -8,8 +8,14 @@ The Pebble watchface looks like the Minecraft clock.
 ## Development
 
 ```
+npm run build
 pebble build
-pebble install --emulator aplite --logs
-pebble install --emulator basalt --logs
-pebble install --emulator chalk --logs
+# Pebble Classic
+npm run a
+# Pebble Time
+npm run b
+# Pebble Time Round
+npm run c
+# Pebble 2
+npm run d
 ```

@@ -33,11 +33,11 @@ void digital_init_clock(Window* window) {
   GRect bounds = layer_get_bounds(window_layer);
 
   s_time_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_MINECRAFTER_24));
-  s_day_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_WHITERABBIT_10));
+  s_day_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_WHITERABBIT_11));
 
   // time
-  int time_text_y = PBL_IF_ROUND_ELSE(120, 114);
-  int day_text_y = time_text_y + 28;
+  int time_text_y = PBL_IF_ROUND_ELSE(118, 113);
+  int day_text_y = time_text_y + 29;
   s_time_text_layer = text_layer_create(GRect(0, time_text_y, bounds.size.w, 50));
   init_text_layer(s_time_text_layer, true, GTextAlignmentCenter);
   layer_add_child(window_layer, text_layer_get_layer(s_time_text_layer));
@@ -70,7 +70,9 @@ void digital_deinit_clock(Window* window) {
 void digital_update_clock(struct tm *tick_time, TimeUnits units_changed) {
   static int last_hour = 0;
   static int last_min = 0;
-  // set_time_for_screenshot(tick_time);
+#if USE_DEMO_MODE
+  set_time_for_screenshot(tick_time);
+#endif
   if (last_hour != tick_time->tm_hour || last_min != tick_time->tm_min) {
     update_clock(tick_time);
     last_hour = tick_time->tm_hour;
