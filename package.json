@@ -9,6 +9,7 @@
   "scripts": {
     "build": "pebble build",
     "clean": "pebble clean",
+    "debug": "pebble build && pebble install -vvvv --emulator basalt --logs",
     "a": "pebble install -vvvv --emulator aplite",
     "b": "pebble install -vvvv --emulator basalt",
     "c": "pebble install -vvvv --emulator chalk",
@@ -28,6 +29,12 @@
           "characterRegex": "[0-9:APM ]",
           "type": "font",
           "name": "FONT_MINECRAFTER_24",
+          "file": "fonts/minecrafter_3.ttf"
+        },
+        {
+          "characterRegex": "[0-9:APM ]",
+          "type": "font",
+          "name": "FONT_MINECRAFTER_18",
           "file": "fonts/minecrafter_3.ttf"
         },
         {

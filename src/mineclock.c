@@ -11,7 +11,7 @@ void set_time_for_screenshot(struct tm *tick_time) {
 #endif
 
 static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
-  //APP_LOG(APP_LOG_LEVEL_DEBUG, "tick_handler %d", units_changed);
+  // APP_LOG(APP_LOG_LEVEL_DEBUG, "tick_handler %d", units_changed);
   analog_update_clock(tick_time, units_changed);
   digital_update_clock(tick_time, units_changed);
 }
@@ -33,6 +33,12 @@ static void app_did_focus(bool in_focus) {
   }
 }
 
+static void unobstructed_are_did_change(void *context) {
+  APP_LOG(APP_LOG_LEVEL_DEBUG, "unobstructed_are_did_change");
+  analog_update_layout();
+  digital_update_layout();
+}
+
 static void init(void) {
   s_window = window_create();
   window_set_window_handlers(s_window, (WindowHandlers) {
@@ -45,6 +51,13 @@ static void init(void) {
   app_focus_service_subscribe_handlers((AppFocusHandlers){
     .did_focus = app_did_focus,
   });
+
+#if PBL_PLATFORM_APLITE
+#else
+  unobstructed_area_service_subscribe((UnobstructedAreaHandlers){
+    .did_change = unobstructed_are_did_change,
+  }, NULL);
+#endif
 
   tick_timer_service_subscribe(MINUTE_UNIT, tick_handler);
 }
