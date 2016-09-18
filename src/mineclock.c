@@ -5,7 +5,9 @@ static Window *s_window;
 
 #if USE_DEMO_MODE
 void set_time_for_screenshot(struct tm *tick_time) {
-  tick_time->tm_hour = 6 * (int)(tick_time->tm_sec / 15);
+  tick_time->tm_mon = 0;
+  tick_time->tm_mday = 1;
+  tick_time->tm_hour = (((tick_time->tm_min * 60 + tick_time->tm_sec) / 5) % 4) * 6;
   tick_time->tm_min = 0;
 }
 #endif
@@ -59,7 +61,11 @@ static void init(void) {
   }, NULL);
 #endif
 
+#if USE_DEMO_MODE
+  tick_timer_service_subscribe(SECOND_UNIT, tick_handler);
+#else
   tick_timer_service_subscribe(MINUTE_UNIT, tick_handler);
+#endif
 }
 
 static void deinit(void) {

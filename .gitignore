@@ -7,4 +7,7 @@ build
 # Ignore waf lock file
 .lock-waf*
 
+# Ignore screenshot
+pebble_screenshot_*
+
 node_modules/
