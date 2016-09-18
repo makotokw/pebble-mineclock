@@ -47,9 +47,9 @@ static void init_text_layer(TextLayer *text_layer, GTextAlignment text_alignment
 
 void digital_init_clock(Window* window) {
   s_window_layer = window_get_root_layer(window);
-  s_time_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_MINECRAFTER_24));
+  s_time_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_MINECRAFTER_25));
   s_time_small_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_MINECRAFTER_18));
-  s_day_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_WHITERABBIT_11));
+  s_day_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_WHITERABBIT_12));
 
   s_time_text_layer = text_layer_create(GRect(0, 0, 0, 0));
   s_dom_text_layer = text_layer_create(GRect(0, 0, 0, 0));
@@ -63,7 +63,7 @@ void digital_init_clock(Window* window) {
 
 static void do_layout_fullscreen(GRect bounds)
 {
-  int time_text_y = PBL_IF_ROUND_ELSE(118, 113);
+  int time_text_y = PBL_IF_ROUND_ELSE(117, 112);
   int day_text_y = time_text_y + 29;
 
   // time
@@ -72,13 +72,13 @@ static void do_layout_fullscreen(GRect bounds)
   text_layer_set_font(s_time_text_layer, s_time_font);
 
   // day of week
-  layer_set_frame(text_layer_get_layer(s_dow_text_layer), GRect(bounds.size.w/2 - 50 - 2, day_text_y, 50, 25));
+  layer_set_frame(text_layer_get_layer(s_dow_text_layer), GRect(bounds.size.w/2 - 50, day_text_y, 50, 25));
   init_text_layer(s_dow_text_layer, GTextAlignmentRight);
   text_layer_set_font(s_dow_text_layer, s_day_font);
 
   // day of month
   int margin_w = PBL_IF_ROUND_ELSE(12, 6);
-  layer_set_frame(text_layer_get_layer(s_dom_text_layer), GRect(bounds.size.w/2 + 2, day_text_y, 50, 25));
+  layer_set_frame(text_layer_get_layer(s_dom_text_layer), GRect(bounds.size.w/2 + 4, day_text_y, 50, 25));
   init_text_layer(s_dom_text_layer, GTextAlignmentLeft);
   text_layer_set_font(s_dom_text_layer, s_day_font);
 }

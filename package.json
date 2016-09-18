@@ -7,13 +7,15 @@
     "pebble-app"
   ],
   "scripts": {
+    "start": "pebble build && pebble install -vvvv --emulator basalt --logs",
     "build": "pebble build",
     "clean": "pebble clean",
-    "debug": "pebble build && pebble install -vvvv --emulator basalt --logs",
-    "a": "pebble install -vvvv --emulator aplite",
-    "b": "pebble install -vvvv --emulator basalt",
-    "c": "pebble install -vvvv --emulator chalk",
-    "d": "pebble install -vvvv --emulator diorite"
+    "a": "unset PEBBLE_PHONE; pebble install -vvvv --emulator aplite",
+    "b": "unset PEBBLE_PHONE; pebble install -vvvv --emulator basalt",
+    "c": "unset PEBBLE_PHONE; pebble install -vvvv --emulator chalk",
+    "d": "unset PEBBLE_PHONE; pebble install -vvvv --emulator diorite",
+    "iphone": "pebble install --phone $PEBBLE_IPHONE",
+    "android": "pebble install --phone $PEBBLE_ANDROID"
   },
   "pebble": {
     "sdkVersion": "3",
@@ -28,7 +30,7 @@
         {
           "characterRegex": "[0-9:APM ]",
           "type": "font",
-          "name": "FONT_MINECRAFTER_24",
+          "name": "FONT_MINECRAFTER_25",
           "file": "fonts/minecrafter_3.ttf"
         },
         {
@@ -40,7 +42,7 @@
         {
           "characterRegex": "[0-9:A-Za-z ]",
           "type": "font",
-          "name": "FONT_WHITERABBIT_11",
+          "name": "FONT_WHITERABBIT_12",
           "file": "fonts/whiterabbit.ttf"
         },
         {
