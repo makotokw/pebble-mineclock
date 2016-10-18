@@ -47,9 +47,16 @@ static void init_text_layer(TextLayer *text_layer, GTextAlignment text_alignment
 
 void digital_init_clock(Window* window) {
   s_window_layer = window_get_root_layer(window);
+
+#if PBL_PLATFORM_EMERY
+  s_time_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_MINECRAFTER_29));
+  s_time_small_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_MINECRAFTER_21));
+  s_day_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_WHITERABBIT_14));
+#else
   s_time_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_MINECRAFTER_25));
   s_time_small_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_MINECRAFTER_18));
   s_day_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_WHITERABBIT_12));
+#endif
 
   s_time_text_layer = text_layer_create(GRect(0, 0, 0, 0));
   s_dom_text_layer = text_layer_create(GRect(0, 0, 0, 0));
@@ -63,8 +70,14 @@ void digital_init_clock(Window* window) {
 
 static void do_layout_fullscreen(GRect bounds)
 {
-  int time_text_y = PBL_IF_ROUND_ELSE(117, 112);
+  int time_text_y = (bounds.size.h / 2) + PBL_IF_ROUND_ELSE(27, 28);
   int day_text_y = time_text_y + 29;
+
+#if PBL_PLATFORM_EMERY
+  double r = 1.174;
+  time_text_y *= r;
+  day_text_y *= r;
+#endif
 
   // time
   layer_set_frame(text_layer_get_layer(s_time_text_layer), GRect(0, time_text_y, bounds.size.w, 50));

@@ -14,6 +14,7 @@
     "b": "unset PEBBLE_PHONE; pebble install -vvvv --emulator basalt",
     "c": "unset PEBBLE_PHONE; pebble install -vvvv --emulator chalk",
     "d": "unset PEBBLE_PHONE; pebble install -vvvv --emulator diorite",
+    "e": "unset PEBBLE_PHONE; pebble install -vvvv --emulator emery",
     "iphone": "pebble install --phone $PEBBLE_IPHONE",
     "android": "pebble install --phone $PEBBLE_ANDROID"
   },
@@ -46,6 +47,24 @@
           "file": "fonts/whiterabbit.ttf"
         },
         {
+          "characterRegex": "[0-9:APM ]",
+          "type": "font",
+          "name": "FONT_MINECRAFTER_29",
+          "file": "fonts/minecrafter_3.ttf"
+        },
+        {
+          "characterRegex": "[0-9:APM ]",
+          "type": "font",
+          "name": "FONT_MINECRAFTER_21",
+          "file": "fonts/minecrafter_3.ttf"
+        },
+        {
+          "characterRegex": "[0-9:A-Za-z ]",
+          "type": "font",
+          "name": "FONT_WHITERABBIT_14",
+          "file": "fonts/whiterabbit.ttf"
+        },
+        {
           "type": "bitmap",
           "name": "IMAGE_BOARD",
           "file": "images/board.png"
@@ -71,7 +90,8 @@
       "aplite",
       "basalt",
       "chalk",
-      "diorite"
+      "diorite",
+      "emery"
     ],
     "capabilities": []
   },
