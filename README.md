@@ -11,11 +11,11 @@ The Pebble watchface looks like the Minecraft clock.
 npm run build
 pebble build
 # Pebble Classic
-npm run a
+npm run aplite
 # Pebble Time
-npm run b
+npm run basalt
 # Pebble Time Round
-npm run c
+npm run chalk
 # Pebble 2
-npm run d
+npm run diorite
 ```

@@ -1,6 +1,12 @@
 # JetBrains
 .idea/
 
+# Claude
+.claude/*.local.json
+
+# Node.js
+node_modules/
+
 # Ignore build generated files
 build
 
@@ -9,5 +15,3 @@ build
 
 # Ignore screenshot
 pebble_screenshot_*
-
-node_modules/

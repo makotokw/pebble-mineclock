@@ -8,13 +8,16 @@
     "pebble-app"
   ],
   "scripts": {
-    "start": "pebble build && pebble install -vvvv --emulator basalt --logs",
+    "start": "npm run build && npm run basalt",
     "build": "pebble build",
     "clean": "pebble clean",
-    "a": "unset PEBBLE_PHONE; pebble install -vvvv --emulator aplite",
-    "b": "unset PEBBLE_PHONE; pebble install -vvvv --emulator basalt",
-    "c": "unset PEBBLE_PHONE; pebble install -vvvv --emulator chalk",
-    "d": "unset PEBBLE_PHONE; pebble install -vvvv --emulator diorite",
+    "aplite": "unset PEBBLE_PHONE; pebble install -vvvv --emulator aplite --logs",
+    "basalt": "unset PEBBLE_PHONE; pebble install -vvvv --emulator basalt --logs",
+    "chalk": "unset PEBBLE_PHONE; pebble install -vvvv --emulator chalk --logs",
+    "diorite": "unset PEBBLE_PHONE; pebble install -vvvv --emulator diorite --logs",
+    "emery": "unset PEBBLE_PHONE; pebble install -vvvv --emulator emery --logs",
+    "flint": "unset PEBBLE_PHONE; pebble install -vvvv --emulator flint --logs",
+    "gabbro": "unset PEBBLE_PHONE; pebble install -vvvv --emulator gabbro --logs",
     "iphone": "pebble install --phone $PEBBLE_IPHONE",
     "android": "pebble install --phone $PEBBLE_ANDROID"
   },
@@ -72,7 +75,10 @@
       "aplite",
       "basalt",
       "chalk",
-      "diorite"
+      "diorite",
+      "emery",
+      "flint",
+      "gabbro"
     ],
     "capabilities": []
   }
