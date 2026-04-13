@@ -63,7 +63,15 @@ void digital_init_clock(Window* window) {
 
 static void do_layout_fullscreen(GRect bounds)
 {
-  int time_text_y = PBL_IF_ROUND_ELSE(117, 112);
+#if PBL_DISPLAY_HEIGHT == 260
+  int time_text_y = 169;
+#elif PBL_DISPLAY_HEIGHT == 228
+  int time_text_y = 148;
+#elif PBL_DISPLAY_HEIGHT == 180
+  int time_text_y = 117;
+#else
+  int time_text_y = 112;
+#endif
   int day_text_y = time_text_y + 29;
 
   // time
